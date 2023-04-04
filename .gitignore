@@ -152,7 +152,3 @@ cython_debug/
 #.idea/
 
 *.DS\_Store
-
-data/networks/
-notebooks/
-figures/
