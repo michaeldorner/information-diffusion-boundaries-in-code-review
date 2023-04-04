@@ -1,7 +1,10 @@
 from datetime import datetime
 from collections import defaultdict
 
-import orjson
+try:
+    import orjson as json
+except ImportError:
+    import json
 
 
 class EntityNotFound(Exception):
@@ -53,7 +56,7 @@ class CommunicationNetwork(TimeVaryingHypergraph):
     @classmethod
     def from_json(cls, file_path: str, name=None):
         with open(file_path, 'r', encoding='utf8') as json_file:
-            raw_data = orjson.loads(json_file.read())
+            raw_data = json.loads(json_file.read())
             hedges = {str(chan_id): set(channel['participants']) for chan_id, channel in raw_data.items()}
             timings = {str(chan_id): datetime.fromisoformat(channel['end']) for chan_id, channel in raw_data.items()}
 
