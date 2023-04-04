@@ -67,7 +67,10 @@ and compare the hash values of our results:
 ```
 d455f1e37237014830fa9aaca76232594c92c193c241b71ca28ec69969163daf  data/minimal_paths/microsoft.pickle
 d455f1e37237014830fa9aaca76232594c92c193c241b71ca28ec69969163daf  data/minimal_paths/microsoft.csv
+...
 ```
+
+Please notice: Future protocol versions may produce different hashes if the internals change. This simulation uses [Pickle Protocol version 5](https://peps.python.org/pep-0574/). `.csv` files must produce always the same hashes.
 
 ## Visualization
 
@@ -76,6 +79,10 @@ Because of the large runtime of the simulation, we provide precomputed results o
 To visualize the results and reproduce the tables and figures of the publication, see the Jupyter notebooks in the subfolder `notebooks/`.
 
 ## Credits
+
+Thanks a lot
+
+- [Andreas Bauer](https://github.com/andreas-bauer) for your valuable feedback in countless discussion.
 
 ## License
 
