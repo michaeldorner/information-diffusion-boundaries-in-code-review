@@ -24,6 +24,14 @@ The project depends on only three external libraries: [`tqdm`](https://github.co
 python3 -m pip install -r requirements.txt
 ```
 
+For a faster initial loading of the communication network, you **can optionally** install `orjson` via pip:
+
+```
+python3 -m pip install orjson
+```
+
+If `orjson` is not installed, built-in [`json`](https://docs.python.org/3/library/json.html) encoder is used.
+
 ## Usage
 
 To run the full simulation, use
