@@ -1,0 +1,9 @@
+{
+    "python.linting.lintOnSave": true,
+    "python.linting.enabled": true,
+    "editor.formatOnSave": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [
+        "--rcfile=${workspaceFolder}/.pylintrc"
+    ],
+}
