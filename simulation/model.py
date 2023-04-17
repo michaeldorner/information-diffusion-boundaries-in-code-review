@@ -56,8 +56,9 @@ class CommunicationNetwork(TimeVaryingHypergraph):
         return self.vertices(channel)
 
     @classmethod
-    def from_json(cls, file_path: Path, name=None):
-        with open(file_path, 'rb') as file:
+    def from_json(cls, file_path, name=None):
+        file_path = Path(file_path)
+        with file_path.open('rb') as file:
             if file_path.suffix == '.bz2':
                 raw_data = json.loads(bz2.decompress(file.read()))
             else:

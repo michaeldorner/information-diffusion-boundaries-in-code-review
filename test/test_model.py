@@ -18,7 +18,7 @@ class ModelTest(unittest.TestCase):
 
 class ModelDataTest(unittest.TestCase):
     def test_model_with_data(self):
-        communciation_network = CommunicationNetwork.from_json('./data/networks/microsoft.json')
+        communciation_network = CommunicationNetwork.from_json('./data/networks/microsoft.json.bz2')
         self.assertEqual(len(communciation_network.participants()), 37103)
         self.assertEqual(len(communciation_network.channels()), 309740)
 
