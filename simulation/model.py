@@ -1,5 +1,7 @@
 from datetime import datetime
 from collections import defaultdict
+from pathlib import Path
+import bz2
 
 try:
     import orjson as json
@@ -54,9 +56,12 @@ class CommunicationNetwork(TimeVaryingHypergraph):
         return self.vertices(channel)
 
     @classmethod
-    def from_json(cls, file_path: str, name=None):
-        with open(file_path, 'r', encoding='utf8') as json_file:
-            raw_data = json.loads(json_file.read())
+    def from_json(cls, file_path: Path, name=None):
+        with open(file_path, 'rb') as file:
+            if file_path.suffix == '.bz2':
+                raw_data = json.loads(bz2.decompress(file.read()))
+            else:
+                raw_data = json.loads(file.read())
             hedges = {str(chan_id): set(channel['participants']) for chan_id, channel in raw_data.items()}
             timings = {str(chan_id): datetime.fromisoformat(channel['end']) for chan_id, channel in raw_data.items()}
 

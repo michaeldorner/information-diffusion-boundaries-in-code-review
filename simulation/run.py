@@ -30,7 +30,7 @@ def run_simulation():
         single_source_dijkstra = single_source_dijkstra_vertices
 
     for name in args.select:
-        communication_network = CommunicationNetwork.from_json(Path(f'./data/networks/{name}.json'), name=name)
+        communication_network = CommunicationNetwork.from_json(Path(f'./data/networks/{name}.json.bz2'), name=name)
 
         participants = tuple(sorted(communication_network.participants()))
         category = pd.api.types.CategoricalDtype(categories=participants, ordered=False)
