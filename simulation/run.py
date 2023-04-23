@@ -38,22 +38,28 @@ def run_simulation():
         for distance_type in DistanceType:
             distance_type_name = distance_type.name.lower()
             min_distances = []
-            with ProcessPoolExecutor(mp_context=mp.get_context('spawn')) as executor:
-                futures = {executor.submit(single_source_dijkstra, communication_network, p, distance_type): p for p in participants}
-                for future in tqdm(as_completed(futures), total=len(futures), desc=f'Find all {distance_type_name} distances at {name.capitalize()}'.ljust(36), miniters=1):
-                    source = futures[future]
-                    for target, distance in future.result().items():
-                        min_distances += [(source, target, distance)]
-            min_distances_df = pd.DataFrame(min_distances, columns=['source', 'target', 'distance'])
+            with ProcessPoolExecutor(mp_context=mp.get_context('spawn'), max_workers=9) as executor:
+                try:
+                    futures = {executor.submit(
+                        single_source_dijkstra, communication_network, p, distance_type): p for p in participants}
+                    for future in tqdm(as_completed(futures), total=len(futures), desc=f'Find all {distance_type_name} distances at {name.capitalize()}'.ljust(36)):
+                        source = futures[future]
+                        for target, distance in future.result().items():
+                            min_distances += [(source, target, distance)]
+                except BaseException as whatever:
+                    print(whatever)
+            min_distances_df = pd.DataFrame(
+                min_distances, columns=['source', 'target', 'distance'])
             min_distances = None
-            min_distances_df.source = min_distances_df.source.astype(category)
-            min_distances_df.target = min_distances_df.target.astype(category)
-
+            min_distances_df.source = min_distances_df.source.astype(
+                category)
+            min_distances_df.target = min_distances_df.target.astype(
+                category)
             data_frames += [min_distances_df.set_index(['source', 'target']).distance.rename(distance_type_name).sort_index()]
         result = pd.concat(data_frames, axis=1).sort_index()
         result.info(verbose=True, memory_usage=True, show_counts=True)
-        result.to_csv(result_dir_path/f'{name}.csv')
-        result.to_pickle(result_dir_path/f'{name}.pickle')
+        result.to_csv(result_dir_path/f'{name}.csv.bz2', compression='bz2')
+        result.to_pickle(result_dir_path/f'{name}.pickle.bz2', compression='bz2')
 
 
 if __name__ == '__main__':
