@@ -74,12 +74,12 @@ shasum -a 256 data/minimal_paths/*
 and compare the hash values of our results:
 
 ```
-9a73a54ecff2ea77229a4a3d05152a688a1e5c88c73df43af6ad7bf7c6470203  data/minimal_paths/s██████.csv
-6655835af49ca1d2588dc1da1e1253f80531c0905d884b6b970e5d9da92ea694  data/minimal_paths/s██████.pickle
-2f839bfa4b60e6592322a901767ed8019aa06027399f8174fef0634294e3be4c  data/minimal_paths/t███████.csv
-755d789c294f9afa1d92be83fcd97e90f46b733b03bc8f2fcc99a7b22b8740c7  data/minimal_paths/t███████.pickle
-TBD  data/minimal_paths/microsoft.csv
-TBD  data/minimal_paths/microsoft.pickle
+042fcda73f34c175983074e7888723d09801f394af740de3df0d7e55bd74836e  data/minimal_paths/microsoft.csv.bz2
+62f0bc6da6afcf546317d13c588a68971ac78b2fe788a13b12df8a198050007a  data/minimal_paths/microsoft.pickle.bz2
+4922cf8968d7cb3c8441202028bbc526abcb401f2fd18095a792631e8e905f65  data/minimal_paths/s██████.csv.bz2
+67524ee939daae416e40c5086a45816e137d454f433c1e1e926fb849d451de56  data/minimal_paths/s██████.pickle.bz2
+d804523978942300a90e0368478b825be25c173fbe2f32054efe54943580f984  data/minimal_paths/t███████.csv.bz2
+eb1e34ff54c0e8f435a73e87d42d3b4544b8c2428cd922cc360d2900178e2142  data/minimal_paths/t███████.pickle.bz2
 ```
 
 Please notice: Future protocol versions may produce different hashes if the internals change. This simulation uses [Pickle Protocol version 5](https://peps.python.org/pep-0574/). `.csv` files must produce always the same hashes.
