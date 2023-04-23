@@ -15,8 +15,10 @@ AVAILABLE_DATA_SETS = ('microsoft', 'trivago')  # other data sets have not been 
 def run_simulation():
     parser = argparse.ArgumentParser(description='Simulating information diffusion in code review communication networks')
     parser.add_argument('--select', type=str, nargs='+', choices=AVAILABLE_DATA_SETS, help='Load a subset of the available data', default=AVAILABLE_DATA_SETS)
+    parser.add_argument('--num_workers', type=int, default=mp.cpu_count(), help='Number of parallel workers (default # of CPUs)')
+
     group = parser.add_mutually_exclusive_group()
-    group.add_argument('--hyperedge_dijkstra', action='store_false', help='Use single-source Dikstra algorithm via hyperedges (tend to be faster; default)')
+    group.add_argument('--hyperedge_dijkstra', action='store_false', help='Use single-source Dikstra algorithm via hyperedges; tend to be faster than --vertex_dijkstra (default)')
     group.add_argument('--vertex_dijkstra', action='store_true', help='Use single-source Dikstra algorithm via vertices')
 
     args = parser.parse_args()
