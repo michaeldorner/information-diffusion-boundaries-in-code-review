@@ -9,7 +9,7 @@ from tqdm import tqdm
 from .model import CommunicationNetwork
 from .minimal_paths import single_source_dijkstra_hyperedges, single_source_dijkstra_vertices, DistanceType
 
-AVAILABLE_DATA_SETS = ('microsoft',)  # other data sets have not been published yet
+AVAILABLE_DATA_SETS = ('microsoft', 'trivago')  # other data sets have not been published yet
 
 
 def run_simulation():
@@ -39,15 +39,14 @@ def run_simulation():
             distance_type_name = distance_type.name.lower()
             min_distances = []
             with ProcessPoolExecutor(mp_context=mp.get_context('spawn'), max_workers=9) as executor:
-                try:
-                    futures = {executor.submit(
-                        single_source_dijkstra, communication_network, p, distance_type): p for p in participants}
-                    for future in tqdm(as_completed(futures), total=len(futures), desc=f'Find all {distance_type_name} distances at {name.capitalize()}'.ljust(36)):
-                        source = futures[future]
-                        for target, distance in future.result().items():
-                            min_distances += [(source, target, distance)]
-                except BaseException as whatever:
-                    print(whatever)
+                futures = {executor.submit(
+                    single_source_dijkstra, communication_network, p, distance_type): p for p in participants}
+                for future in tqdm(as_completed(futures), total=len(futures), desc=f'Find all {distance_type_name} distances at {name.capitalize()}'.ljust(36)):
+                    source = futures[future]
+                    if future.exception():
+                        raise future.exception()
+                    for target, distance in future.result().items():
+                        min_distances += [(source, target, distance)]
             min_distances_df = pd.DataFrame(
                 min_distances, columns=['source', 'target', 'distance'])
             min_distances = None
