@@ -41,7 +41,7 @@ To run the full simulation, use
 python3 -m simulation.run
 ```
 
-Please notice that depending on your hardware, the complete simulation may run several days and max out the CPU power. On a Apple MacBook M1 Max, it takes about two days to complete. The simulations is highly parallelized which means: The more cores, the better/faster. We also recommend at least 64 GB of RAM and at least 12 GB available storage for storing the results.
+Please notice that depending on your hardware, the complete simulation may run several days and max out the CPU power. On a Apple MacBook M1 Max, it takes about three full days to complete. The simulations is highly parallelized which means: The more cores, the better/faster. We also recommend at least 64 GB of RAM and at least 12 GB available storage for storing the results.
 
 The simulation provides options
 
