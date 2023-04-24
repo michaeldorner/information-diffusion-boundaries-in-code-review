@@ -17,7 +17,7 @@ For more details on time-varying hypergraphs in general and modelling communicat
 
 ## Installation
 
-The simulation requires Python 3.10 and higher. Due to the [significant performance improvements in Python 3.11](https://docs.python.org/3/whatsnew/3.11.html#whatsnew311-faster-cpython) and the heavy CPU workload in the simulation, Python 3.11 is highly recommended!
+The simulation requires Python 3.10 and higher. Due to the [significant performance improvements in Python 3.11](https://docs.python.org/3/whatsnew/3.11.html#whatsnew311-faster-cpython) and the heavy CPU workload in the simulation, Python 3.11 is highly recommended! 
 
 The project depends on only three external libraries: [`tqdm`](https://github.com/tqdm/tqdm) and [`pandas`](https://pandas.pydata.org). Install via
 
@@ -41,7 +41,7 @@ To run the full simulation, use
 python3 -m simulation.run
 ```
 
-Please notice that depending on your hardware, the complete simulation may run several days and max out the CPU power. On a Apple MacBook M1 Max, it takes about two days to complete. The simulations is highly parallelized which means: The more cores, the better/faster.
+Please notice that depending on your hardware, the complete simulation may run several days and max out the CPU power. On a Apple MacBook M1 Max, it takes about two days to complete. The simulations is highly parallelized which means: The more cores, the better/faster. We also recommend at least 64 GB of RAM and at least 12 GB available storage for storing the results.
 
 The simulation provides options
 
