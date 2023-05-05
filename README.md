@@ -65,7 +65,7 @@ pip3 -m unittest discover
 
 ### Verification
 
-To verify the results, run
+To verify the [results](https://doi.org/10.5281/zenodo.7898863), run
 
 ```
 shasum -a 256 data/minimal_paths/*                      
@@ -86,7 +86,7 @@ Please notice: Future protocol versions may produce different hashes if the inte
 
 ## Visualization
 
-Because of the large runtime of the simulation, we provide precomputed results of the simulation via [Zenodo](). You can download the results and place the `.pickle` and `.csv` files in the subfolder `data/minimal_paths`. Consider verify the `.pickle` and `.csv` files (see [Verification](#verification)).
+Because of the large runtime of the simulation, we provide precomputed results of the simulation via [Zenodo](https://doi.org/10.5281/zenodo.7898863). You can download the results and place the `.pickle` and `.csv` files in the subfolder `data/minimal_paths`. Consider verify the `.pickle` and `.csv` files (see [Verification](#verification)).
 
 To visualize the results and reproduce the tables and figures of the publication, see the Jupyter notebooks in the subfolder `notebooks/`.
 
