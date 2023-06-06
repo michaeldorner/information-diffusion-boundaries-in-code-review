@@ -1,11 +1,12 @@
-name: Unit tests
+name: CI/CD
 
 on:
   push:
-  
+      branches:    
+       - main
       
 jobs:
-  test:
+  Run-unit-tests:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
