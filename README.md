@@ -6,7 +6,6 @@
 [![Codacy Badge](https://img.shields.io/codacy/coverage/ef43d5d9b7c74ec0b211c03d91c448d8)](https://app.codacy.com/gh/michaeldorner/information-diffusion-boundaries-in-code-review/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7898863.svg)](https://doi.org/10.5281/zenodo.7898863)
 
-
 Simulation code for the study "Upper Bound of Information Diffusion in Code Review"
 
 
@@ -107,6 +106,7 @@ To visualize the results and reproduce the tables and figures of the publication
 Thanks a lot
 
 - [Andreas Bauer](https://github.com/andreas-bauer) for your valuable feedback in countless discussion.
+- Students of the course _Software Testing_ in 2023 for their extraordinary efforts on developing a test suite for this project.
 
 
 ## License
