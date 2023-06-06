@@ -22,7 +22,7 @@ For more details on time-varying hypergraphs in general and modelling communicat
 
 The simulation requires Python 3.10 and higher. Due to the [significant performance improvements in Python 3.11](https://docs.python.org/3/whatsnew/3.11.html#whatsnew311-faster-cpython) and the heavy CPU workload in the simulation, Python 3.11 is highly recommended! 
 
-The project depends on only three external libraries: [`tqdm`](https://github.com/tqdm/tqdm) and [`pandas`](https://pandas.pydata.org). Install via
+The project depends on only two external libraries: [`tqdm`](https://github.com/tqdm/tqdm) and [`pandas`](https://pandas.pydata.org). Install via
 
 ```
 python3 -m pip install -r requirements.txt
