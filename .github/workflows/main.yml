@@ -24,14 +24,15 @@ jobs:
         run: |
           python -m pip install -U pip
           pip install -r requirements.txt
-          if [${{ matrix.orjson }} == true]; then
+      - name: Install orjson
+        if: matrix.orjson == true
+        run: |
             pip install -U orjson
-          fi
       - name: Run unit tests
         run: |
           python -m unittest discover
       - name: Report coverage
-        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11' && matrix.orjson == false
         run: |
           pip install coverage
           coverage run -m unittest discover
