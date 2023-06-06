@@ -29,5 +29,6 @@ jobs:
       - name: Report coverage
         if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'
         run: |
+          export CODACY_PROJECT_TOKEN=${{secrets.CODACY_PROJECT_TOKEN}}
           bash <(curl -Ls https://coverage.codacy.com/get.sh)
         
