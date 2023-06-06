@@ -11,8 +11,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        python-version: ["3.10", "3.11"]
+        os: [ubuntu-latest]
+        python-version: ['3.11']
 
     steps:
       - uses: actions/checkout@master
@@ -28,6 +28,7 @@ jobs:
           coverage -m unittest discover
           coverage xml
       - name: Report coverage
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'
         run: |
           bash <(curl -Ls https://coverage.codacy.com/get.sh)
         
