@@ -26,9 +26,10 @@ jobs:
           pip install -r requirements.txt
           pip install coverage
           coverage run -m unittest discover
+          coverage xml
       - name: Report coverage
         if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'
         run: |
           export CODACY_PROJECT_TOKEN=${{secrets.CODACY_PROJECT_TOKEN}}
-          bash <(curl -Ls https://coverage.codacy.com/get.sh)
+          bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage.xml
         
