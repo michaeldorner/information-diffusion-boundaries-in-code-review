@@ -2,8 +2,9 @@ name: main
 
 on:
   push:
-      branches:    
-       - main
+      paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
       
 jobs:
   run-unit-tests:
