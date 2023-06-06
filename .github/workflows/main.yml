@@ -17,10 +17,17 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@master
         with:
           python-version: ${{ matrix.python-version }}
       - name: Run unit tests
         run: |
+          python -m pip install -U pip
           pip install -r requirements.txt
-          python3 -m unittest discover
+          pip install coverage
+          coverage -m unittest discover
+          coverage xml
+      - name: Report coverage
+        run: |
+          bash <(curl -Ls https://coverage.codacy.com/get.sh)
+        
