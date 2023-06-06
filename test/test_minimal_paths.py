@@ -56,18 +56,14 @@ class MinimalPathTest(unittest.TestCase):
         }
     }
 
-    def test_single_source_dijkstra_vertices(self):
+    def test_minimal_distance(self):
         for communication_network, minimal_paths in ((MinimalPathTest.communication_network_1, MinimalPathTest.minimal_paths_1), (MinimalPathTest.communication_network_2, MinimalPathTest.minimal_paths_2)):
             for start_vertex, _minimal_paths in minimal_paths.items():
                 for distance_type in DistanceType:
-                    with self.subTest(distance_type=distance_type.name, communication_network=communication_network.name):
+                    with self.subTest(implementation='single_source_dijkstra_vertices', distance_type=distance_type.name, communication_network=communication_network.name):
                         self.assertEqual(single_source_dijkstra_vertices(communication_network, start_vertex, distance_type, min_timing=0), _minimal_paths[distance_type])
 
-    def test_single_source_dijkstra_hyperedges(self,):
-        for communication_network, minimal_paths in ((MinimalPathTest.communication_network_1, MinimalPathTest.minimal_paths_1), (MinimalPathTest.communication_network_2, MinimalPathTest.minimal_paths_2)):
-            for start_vertex, _minimal_paths in minimal_paths.items():
-                for distance_type in DistanceType:
-                    with self.subTest(distance_type=distance_type.name, communication_network=communication_network.name):
+                    with self.subTest(implementation='single_source_dijkstra_hyperedges', distance_type=distance_type.name, communication_network=communication_network.name):
                         self.assertEqual(single_source_dijkstra_hyperedges(communication_network, start_vertex, distance_type, min_timing=0), _minimal_paths[distance_type])
 
     def test_pairwise_minimal_distance(self):
