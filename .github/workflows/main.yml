@@ -1,4 +1,4 @@
-name: CI/CD
+name: main
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
        - main
       
 jobs:
-  Run-unit-tests:
+  run-unit-tests:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
