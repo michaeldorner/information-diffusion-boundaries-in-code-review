@@ -7,7 +7,7 @@ import pandas as pd
 from tqdm import tqdm
 
 from .model import CommunicationNetwork
-from .minimal_paths import single_source_dijkstra_hyperedges, single_source_dijkstra_vertices, DistanceType
+from .minimal_distances import single_source_dijkstra_hyperedges, single_source_dijkstra_vertices, DistanceType
 
 AVAILABLE_DATA_SETS = ('microsoft', )  # other data sets have not been published yet
 

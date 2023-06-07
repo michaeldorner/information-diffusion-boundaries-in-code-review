@@ -1,7 +1,7 @@
 import unittest
 
 from simulation.model import CommunicationNetwork
-from simulation.minimal_paths import single_source_dijkstra_vertices, single_source_dijkstra_hyperedges, DistanceType
+from simulation.minimal_distances import single_source_dijkstra_vertices, single_source_dijkstra_hyperedges, DistanceType
 
 
 class MinimalPathTest(unittest.TestCase):
@@ -15,7 +15,7 @@ class MinimalPathTest(unittest.TestCase):
         'h3': 3
     }, name='1')
 
-    minimal_paths_1 = {
+    minimal_distances_1 = {
         'v1': {
             DistanceType.SHORTEST: {'v2': 1, 'v3': 2, 'v4': 3},
             DistanceType.FASTEST: {'v2': 0, 'v3': 1, 'v4': 2},
@@ -48,7 +48,7 @@ class MinimalPathTest(unittest.TestCase):
         'h10': 7,
     }, name='2')
 
-    minimal_paths_2 = {
+    minimal_distances_2 = {
         'v4': {
             DistanceType.SHORTEST: {'v3': 1, 'v8': 2},
             DistanceType.FASTEST: {'v3': 0, 'v8': 106},
@@ -57,14 +57,14 @@ class MinimalPathTest(unittest.TestCase):
     }
 
     def test_minimal_distance(self):
-        for communication_network, minimal_paths in ((MinimalPathTest.communication_network_1, MinimalPathTest.minimal_paths_1), (MinimalPathTest.communication_network_2, MinimalPathTest.minimal_paths_2)):
-            for start_vertex, _minimal_paths in minimal_paths.items():
+        for communication_network, minimal_distances in ((MinimalPathTest.communication_network_1, MinimalPathTest.minimal_distances_1), (MinimalPathTest.communication_network_2, MinimalPathTest.minimal_distances_2)):
+            for start_vertex, _minimal_distances in minimal_distances.items():
                 for distance_type in DistanceType:
                     with self.subTest(implementation='single_source_dijkstra_vertices', distance_type=distance_type.name, communication_network=communication_network.name):
-                        self.assertEqual(single_source_dijkstra_vertices(communication_network, start_vertex, distance_type, min_timing=0), _minimal_paths[distance_type])
+                        self.assertEqual(single_source_dijkstra_vertices(communication_network, start_vertex, distance_type, min_timing=0), _minimal_distances[distance_type])
 
                     with self.subTest(implementation='single_source_dijkstra_hyperedges', distance_type=distance_type.name, communication_network=communication_network.name):
-                        self.assertEqual(single_source_dijkstra_hyperedges(communication_network, start_vertex, distance_type, min_timing=0), _minimal_paths[distance_type])
+                        self.assertEqual(single_source_dijkstra_hyperedges(communication_network, start_vertex, distance_type, min_timing=0), _minimal_distances[distance_type])
 
     def test_pairwise_minimal_distance(self):
         for communication_network in (MinimalPathTest.communication_network_1, MinimalPathTest.communication_network_2, ):
