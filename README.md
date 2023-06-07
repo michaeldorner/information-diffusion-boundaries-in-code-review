@@ -77,7 +77,7 @@ The tests run also via [GitHub Actions](https://github.com/michaeldorner/informa
 To verify the [results](https://doi.org/10.5281/zenodo.7898863), run
 
 ```
-shasum -a 256 data/minimal_paths/*                      
+shasum -a 256 data/minimal_distances/*                      
 ```
 
 and compare the hash values of our results:
