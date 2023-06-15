@@ -74,7 +74,7 @@ The tests run also via [GitHub Actions](https://github.com/michaeldorner/informa
 
 ### Verification
 
-To verify the your results with our [results](https://doi.org/10.5281/zenodo.7898863), compare the MD5 hashes of your results (for example, via `md5 ./minimal_distances/.*bz2` on macOS or `md5sum ./minimal_distances/.*bz2` on Linux) with the following MD5 hashes.
+To verify the your results with our [results](https://doi.org/10.5281/zenodo.7898863), compare the MD5 hashes of your results (for example, via `md5 ./data/minimal_distances/.*bz2` on macOS or `md5sum ./data/minimal_distances/.*bz2` on Linux) with the following MD5 hashes.
 
 ```
 trivago.pickle.bz2 	 64c97c8ddb1e67cb70bfe297ad81c4ed
