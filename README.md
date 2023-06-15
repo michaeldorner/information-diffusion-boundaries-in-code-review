@@ -83,12 +83,12 @@ shasum -a 256 data/minimal_distances/*
 and compare the hash values of our results:
 
 ```
-042fcda73f34c175983074e7888723d09801f394af740de3df0d7e55bd74836e  data/minimal_paths/microsoft.csv.bz2
-62f0bc6da6afcf546317d13c588a68971ac78b2fe788a13b12df8a198050007a  data/minimal_paths/microsoft.pickle.bz2
-4922cf8968d7cb3c8441202028bbc526abcb401f2fd18095a792631e8e905f65  data/minimal_paths/s██████.csv.bz2
-67524ee939daae416e40c5086a45816e137d454f433c1e1e926fb849d451de56  data/minimal_paths/s██████.pickle.bz2
-d804523978942300a90e0368478b825be25c173fbe2f32054efe54943580f984  data/minimal_paths/t███████.csv.bz2
-eb1e34ff54c0e8f435a73e87d42d3b4544b8c2428cd922cc360d2900178e2142  data/minimal_paths/t███████.pickle.bz2
+042fcda73f34c175983074e7888723d09801f394af740de3df0d7e55bd74836e  data/minimal_distances/microsoft.csv.bz2
+62f0bc6da6afcf546317d13c588a68971ac78b2fe788a13b12df8a198050007a  data/minimal_distances/microsoft.pickle.bz2
+4922cf8968d7cb3c8441202028bbc526abcb401f2fd18095a792631e8e905f65  data/minimal_distances/spotify.csv.bz2
+67524ee939daae416e40c5086a45816e137d454f433c1e1e926fb849d451de56  data/minimal_distances/spotify.pickle.bz2
+d804523978942300a90e0368478b825be25c173fbe2f32054efe54943580f984  data/minimal_distances/trivago.csv.bz2
+eb1e34ff54c0e8f435a73e87d42d3b4544b8c2428cd922cc360d2900178e2142  data/minimal_distances/trivago.pickle.bz2
 ```
 
 Please notice: Future protocol versions may produce different hashes if the internals change. This simulation uses [Pickle Protocol version 5](https://peps.python.org/pep-0574/). `.csv` files must produce always the same hashes.
