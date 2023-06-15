@@ -1,0 +1,4 @@
+index,bounded,left-bounded,right-bounded,unbounded
+Trivago,0.77887,0.108927,0.0896806,0.0225225
+Spotify,0.86478,0.0704764,0.0611002,0.0036438
+Microsoft,0.693653,0.209624,0.0591302,0.0375928
