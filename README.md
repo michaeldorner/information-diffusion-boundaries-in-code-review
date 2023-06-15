@@ -74,7 +74,7 @@ The tests run also via [GitHub Actions](https://github.com/michaeldorner/informa
 
 ### Verification
 
-To verify the [results](https://doi.org/10.5281/zenodo.7898863), compare the md5 hash values of our results (for example, via `md5 ./minimal_distances.*bz2` on macOS or `md5sum ./minimal_distances.*bz2` on Linux:
+To verify the your results with our [results](https://doi.org/10.5281/zenodo.7898863), compare the MD5 hashes of your results (for example, via `md5 ./minimal_distances/.*bz2` on macOS or `md5sum ./minimal_distances/.*bz2` on Linux) with the following MD5 hashes.
 
 ```
 trivago.pickle.bz2 	 64c97c8ddb1e67cb70bfe297ad81c4ed
@@ -85,8 +85,7 @@ microsoft.pickle.bz2 	 f5b0beb747705fe3fcf4a84191bba937
 microsoft.csv.bz2 	 08e93558473fb2b0a00de90e608901a3
 ```
 
-We also provide a minimal unittest that compares the hashes from
-set a command line variable `ZENODO_TOKEN=<...>` and run 
+We also provide a minimal unittest that compares the hashes from Zenodo. It requires `requests` (install via `pip3 install requests`) and a [Zenodo access token](https://zenodo.org/account/settings/applications/tokens/new/). Run the unit test with the following command: 
 
 ```
 export ZENODO_TOKEN=<insert token here>
