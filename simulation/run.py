@@ -23,7 +23,7 @@ def run_simulation():
 
     args = parser.parse_args()
 
-    result_dir_path = Path('./data/minimal_paths/')
+    result_dir_path = Path('./data/minimal_distances/')
     result_dir_path.mkdir(parents=True, exist_ok=True)
 
     if args.hyperedge_dijkstra:
