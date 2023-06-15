@@ -74,24 +74,26 @@ The tests run also via [GitHub Actions](https://github.com/michaeldorner/informa
 
 ### Verification
 
-To verify the [results](https://doi.org/10.5281/zenodo.7898863), run
+To verify the [results](https://doi.org/10.5281/zenodo.7898863), compare the md5 hash values of our results (for example, via `md5 ./minimal_distances.*bz2` on macOS or `md5sum ./minimal_distances.*bz2` on Linux:
 
 ```
-shasum -a 256 data/minimal_distances/*                      
+trivago.pickle.bz2 	 64c97c8ddb1e67cb70bfe297ad81c4ed
+trivago.csv.bz2 	 a5e1a6d5230ac8c1888a711bd91f0420
+spotify.pickle.bz2 	 c434b887fcf449dc7195cc428260b35c
+spotify.csv.bz2 	 259532c46779df2702bcff0fa6c7932f
+microsoft.pickle.bz2 	 f5b0beb747705fe3fcf4a84191bba937
+microsoft.csv.bz2 	 08e93558473fb2b0a00de90e608901a3
 ```
 
-and compare the hash values of our results:
+We also provide a minimal unittest that compares the hashes from
+set a command line variable `ZENODO_TOKEN=<...>` and run 
 
 ```
-042fcda73f34c175983074e7888723d09801f394af740de3df0d7e55bd74836e  data/minimal_distances/microsoft.csv.bz2
-62f0bc6da6afcf546317d13c588a68971ac78b2fe788a13b12df8a198050007a  data/minimal_distances/microsoft.pickle.bz2
-4922cf8968d7cb3c8441202028bbc526abcb401f2fd18095a792631e8e905f65  data/minimal_distances/spotify.csv.bz2
-67524ee939daae416e40c5086a45816e137d454f433c1e1e926fb849d451de56  data/minimal_distances/spotify.pickle.bz2
-d804523978942300a90e0368478b825be25c173fbe2f32054efe54943580f984  data/minimal_distances/trivago.csv.bz2
-eb1e34ff54c0e8f435a73e87d42d3b4544b8c2428cd922cc360d2900178e2142  data/minimal_distances/trivago.pickle.bz2
+export ZENODO_TOKEN=<insert token here>
+python3 -m unittest tests/test_results.py
 ```
 
-Please notice: Future protocol versions may produce different hashes if the internals change. This simulation uses [Pickle Protocol version 5](https://peps.python.org/pep-0574/). `.csv` files must produce always the same hashes.
+Please notice: This simulation uses [Pickle Protocol version 5](https://peps.python.org/pep-0574/). Future protocol versions may produce different hashes if the internals change. `.csv` files, however, must produce always the same hashes.
 
 
 ## Visualization
