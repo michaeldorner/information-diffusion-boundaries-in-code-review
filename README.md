@@ -17,7 +17,7 @@ Yet, since communication, and, therefore, information diffusion, is (1) inherent
 
 The connotation of minimal is two-fold in time-varying hypergraphs: A distance in time-varying hypergraphs between two vertices can be topological or temporal. This means a minimal path in time-varying hypergraphs can be the _shortest_, _fastest_, and _foremost_ distance between vertices. Those different notions of a minimal path enable us to understand how fast and how far information can spread through code review.
 
-For more details on time-varying hypergraphs in general and modelling communication networks that emerges from code review with time-varying hypergraphs, have a look into [(Dorner et al. 2022)](https://dl.acm.org/doi/abs/10.1145/3544902.3546254).
+For more details on time-varying hypergraphs in general and modelling communication networks that emerges from code review with time-varying hypergraphs, have a look into [Dorner et al. 2022](https://dl.acm.org/doi/abs/10.1145/3544902.3546254).
 
 
 ## Installation
