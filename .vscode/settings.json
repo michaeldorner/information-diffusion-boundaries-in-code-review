@@ -6,4 +6,8 @@
     "python.linting.pylintArgs": [
         "--rcfile=${workspaceFolder}/.pylintrc"
     ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "python.formatting.provider": "none",
 }
