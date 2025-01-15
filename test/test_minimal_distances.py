@@ -61,16 +61,21 @@ class MinimalPathTest(unittest.TestCase):
             for start_vertex, _minimal_distances in minimal_distances.items():
                 for distance_type in DistanceType:
                     with self.subTest(implementation='single_source_dijkstra_vertices', distance_type=distance_type.name, communication_network=communication_network.name):
-                        self.assertEqual(single_source_dijkstra_vertices(communication_network, start_vertex, distance_type, min_timing=0), _minimal_distances[distance_type])
+                        self.assertEqual(single_source_dijkstra_vertices(
+                            communication_network, start_vertex, distance_type, min_timing=0), _minimal_distances[distance_type])
 
                     with self.subTest(implementation='single_source_dijkstra_hyperedges', distance_type=distance_type.name, communication_network=communication_network.name):
-                        self.assertEqual(single_source_dijkstra_hyperedges(communication_network, start_vertex, distance_type, min_timing=0), _minimal_distances[distance_type])
+                        self.assertEqual(single_source_dijkstra_hyperedges(
+                            communication_network, start_vertex, distance_type, min_timing=0), _minimal_distances[distance_type])
 
     def test_pairwise_minimal_distance(self):
         for communication_network in (MinimalPathTest.communication_network_1, MinimalPathTest.communication_network_2, ):
             for distance_type in DistanceType:
                 for vertex in communication_network.vertices():
                     with self.subTest(distance_type=distance_type.name, vertex=vertex):
-                        result_1 = single_source_dijkstra_vertices(communication_network, vertex, distance_type, min_timing=0)
-                        result_2 = single_source_dijkstra_hyperedges(communication_network, vertex, distance_type, min_timing=0)
-                        self.assertEqual(result_1, result_2, f'Single-source Dijkstra implementations for {distance_type.name} and vertex {vertex} are not equivalent')
+                        result_1 = single_source_dijkstra_vertices(
+                            communication_network, vertex, distance_type, min_timing=0)
+                        result_2 = single_source_dijkstra_hyperedges(
+                            communication_network, vertex, distance_type, min_timing=0)
+                        self.assertEqual(result_1, result_2, f'Single-source Dijkstra implementations for {
+                                         distance_type.name} and vertex {vertex} are not equivalent')

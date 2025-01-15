@@ -24,13 +24,16 @@ class ResultsTest(unittest.TestCase):
     @unittest.skipIf(not ZENODO_ACCESS_TOKEN or not REQUESTS_INSTALLED, 'Skipped because no Zenodo access token was provided.')
     def test_results(self):
         zenodo_access_token = os.environ.get('ZENODO_ACCESS_TOKEN')
-        response = requests.get('https://zenodo.org/api/records/8042256', params={'access_token': zenodo_access_token}, timeout=10)
+        response = requests.get('https://zenodo.org/api/records/8042256',
+                                params={'access_token': zenodo_access_token}, timeout=10)
         response.raise_for_status()
-        zenodo_reference = {record['key']: record['checksum'][len('md5:'):] for record in response.json()['files']}
+        zenodo_reference = {record['key']: record['checksum'][len(
+            'md5:'):] for record in response.json()['files']}
         if zenodo_reference:
             for file_path in sorted(Path('./').glob('./data/minimal_distances/*.bz2'), reverse=True):
                 file_name = file_path.name
                 with self.subTest(file_name=file_name):
                     md5_hash = md5(file_path)
                     md5_hash_reference = zenodo_reference.get(file_name)
-                    self.assertEqual(md5_hash, md5_hash_reference, 'md5 hash is not equivalent with reference on Zenodo')
+                    self.assertEqual(
+                        md5_hash, md5_hash_reference, 'md5 hash is not equivalent with reference on Zenodo')

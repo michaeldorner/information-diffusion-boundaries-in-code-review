@@ -37,7 +37,8 @@ def single_source_dijkstra_hyperedges(hypergraph: TimeVaryingHypergraph, source_
                         case DistanceType.SHORTEST:
                             new_distance = prior_distance + 1
                         case DistanceType.FASTEST:
-                            new_distance = prior_distance + (next_hedge_timing - source_hedge_timing)
+                            new_distance = prior_distance + \
+                                (next_hedge_timing - source_hedge_timing)
                         case DistanceType.FOREMOST:
                             new_distance = next_hedge_timing
                     if next_hedge not in hedge_distances or new_distance < hedge_distances[next_hedge]:
@@ -86,7 +87,8 @@ def single_source_dijkstra_vertices(hypergraph: TimeVaryingHypergraph, source_ve
                         case DistanceType.SHORTEST:
                             new_distance = distance + 1
                         case DistanceType.FASTEST:
-                            new_distance = distance + (next_hedge_timing - source_hedge_timing)
+                            new_distance = distance + \
+                                (next_hedge_timing - source_hedge_timing)
                         case DistanceType.FOREMOST:
                             new_distance = next_hedge_timing
                     if new_reachable not in distances or new_distance < distances[new_reachable]:
