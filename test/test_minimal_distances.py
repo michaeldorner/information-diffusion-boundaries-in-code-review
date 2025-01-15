@@ -77,5 +77,5 @@ class MinimalPathTest(unittest.TestCase):
                             communication_network, vertex, distance_type, min_timing=0)
                         result_2 = single_source_dijkstra_hyperedges(
                             communication_network, vertex, distance_type, min_timing=0)
-                        self.assertEqual(result_1, result_2, f'Single-source Dijkstra implementations for {
-                                         distance_type.name} and vertex {vertex} are not equivalent')
+                        self.assertEqual(result_1, result_2,
+                                         f'Single-source Dijkstra implementations for {distance_type.name} and vertex {vertex} are not equivalent')
